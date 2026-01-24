@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Form-to-Insight: Live Feedback Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.plot.ly/plotly-2.24.1.min.js"></script>
+</head>
+
+<body>
+<div class="container dashboard">
+
+    <header>
+        <h1><i class="fas fa-tachometer-alt"></i> Live Insight Dashboard</h1>
+        <p class="subtitle">Created By Vyshnavi</p>
+        <p class="subtitle">Real-time customer feedback analytics and AI processing</p>
+
+        <div class="nav-buttons">
+            <a href="index.html" class="btn">
+                <i class="fas fa-edit"></i> Input Form
+            </a>
+            <a href="dashboard.html" class="btn active">
+                <i class="fas fa-tachometer-alt"></i> Dashboard
+            </a>
+        </div>
+
+        
+    </header>
+
+    <main>
+        <div class="summary-cards">
+            <div class="card">
+                <div class="card-icon star"><i class="fas fa-star"></i></div>
+                <div class="card-content">
+                    <h3>Average Rating</h3>
+                    <p class="card-value" id="avgRating">0.0</p>
+                    <p class="card-trend">Out of 5 Stars</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-icon sentiment"><i class="fas fa-smile"></i></div>
+                <div class="card-content">
+                    <h3>Satisfaction</h3>
+                    <p class="card-value" id="sentimentScore">Neutral</p>
+                    <p class="card-trend">Overall Sentiment</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-icon complaints"><i class="fas fa-exclamation-circle"></i></div>
+                <div class="card-content">
+                    <h3>High Priority</h3>
+                    <p class="card-value" id="urgentCount">0</p>
+                    <p class="card-trend">Needs Attention</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-icon users"><i class="fas fa-database"></i></div>
+                <div class="card-content">
+                    <h3>Total Records</h3>
+                    <p class="card-value" id="totalSubmissions">0</p>
+                    <p class="card-subtext">Synced with MongoDB</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="charts-row">
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3><i class="fas fa-chart-line"></i> Rating Trend</h3>
+                    <p class="chart-description">Average rating progression over time</p>
+                </div>
+                <div id="trendChart" class="chart"></div>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-header">
+                    <h3><i class="fas fa-chart-pie"></i> Feedback Categories</h3>
+                    <p class="chart-description">Distribution of feedback types</p>
+                </div>
+                <div id="categoryChart" class="chart"></div>
+            </div>
+        </div>
+
+        <div class="charts-row">
+            <div class="insights-container">
+                <div class="chart-header">
+                    <h3><i class="fas fa-robot"></i> AI Processed Insights</h3>
+                    <p class="chart-description">NLP Analysis from user comments</p>
+                </div>
+
+                <div class="insights-content">
+                    <div class="insight">
+                        <div class="insight-icon"><i class="fas fa-lightbulb"></i></div>
+                        <div class="insight-text">
+                            <h4>Automated Sentiment</h4>
+                            <p id="aiSentiment">Analyzing text patterns...</p>
+                        </div>
+                    </div>
+
+                    <div class="insight">
+                        <div class="insight-icon"><i class="fas fa-tools"></i></div>
+                        <div class="insight-text">
+                            <h4>Improvement Suggestion</h4>
+                            <p id="aiSuggestion">Waiting for customer data...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="data-table-container">
+            <div class="chart-header">
+                <h3><i class="fas fa-table"></i> Feedback Details</h3>
+            </div>
+
+            <div class="table-wrapper">
+                <table id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>Customer</th>
+                            <th>Product</th>
+                            <th>Category</th>
+                            <th>Priority</th>
+                            <th>Rating</th>
+                            <th>Satisfaction</th>
+                            <th>Comments</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <tr>
+                            <td colspan="7" class="loading-cell">
+                                <i class="fas fa-spinner fa-spin"></i> Loading live data...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>Form-to-Insight Dashboard © 2026 | Real-time Data Pipeline</p>
+        <p class="status">
+            Backend: <span id="dashboardStatus" class="status-connected">● Online</span>
+        </p>
+    </footer>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
